@@ -1,0 +1,29 @@
+import re
+from spacy import spacy.lang.
+
+file, file_out = 'en_wiki_new.txt', 'wiki_clean_preprocessed_for_fastText.txt'
+
+food_data = "updated_preprocessed_food_names.txt"
+
+
+def clean_corpus(food_data, file):
+            
+    with open(food_data) as food_file, open(file) as corpus, open(file_out, 'w') as out: 
+        
+        compounds = [line.strip('\n').replace('_', ' ') for line in food_file if '_' in line]
+        
+        rpl_compounds = [compound.replace(' ', '_') for compound in compounds]
+        
+        compounds_dict = dict(zip(compounds, rpl_compounds))
+                 
+        for line in corpus:
+            
+            for compound, rpl_compound in compounds_dict.items():
+                                
+                line = line.replace(compound, rpl_compound)
+    
+                lines = [re.sub('(^.*?\s+)', "", line).strip('\n').lower()]
+                                                                                                            
+            out.write(" ".join(lines))    
+                
+clean_corpus(food_data, file)            
