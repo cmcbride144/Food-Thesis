@@ -12,6 +12,6 @@ analysis.
 different algorithms (fastText and word2vec) on three different
 corpora: news (Gigaword), encyclopedic information
 (WaCypedia), and web data (ukWaC).
-3. The prediction of human scores using standard linear regression
+3. The prediction of human scores using multi-linear regression
 models by treating word embeddings as predictors, comparing
 results for the various types of embeddings named above.
